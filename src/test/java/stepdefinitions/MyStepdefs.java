@@ -6,7 +6,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.sikuli.script.FindFailed;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import pages.basepage;
+import pages.driver_factory;
 import pages.loginpage;
 import pages.myinfopage;
 
@@ -14,13 +16,15 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class MyStepdefs {
-    WebDriver driver = new ChromeDriver();
+public class MyStepdefs extends driver_factory {
+
+    WebDriver driver=driver_factory.getdriver(); // add classname
     loginpage lp = new loginpage(driver);
     myinfopage info = new myinfopage(driver);
 
     public MyStepdefs() throws IOException {
     }
+
 
     @Given("User is on the login page")
     public void userIsOnTheLoginPage() {
@@ -28,7 +32,7 @@ public class MyStepdefs {
     }
 
     @When("User enters username and password")
-    public void userEntersUsernameAndPassword() {
+    public void userEntersUsernameAndPassword() throws IOException {
         lp.usr_pass();
     }
 
@@ -66,11 +70,10 @@ public class MyStepdefs {
         lp.usr_pass();
         lp.submit_btn();
         info.myinfo_click();
-        //System.out.println(lp.getcell(1,1));
     }
 
     @When("User clicks on the profile picture and clicks on + icon and Upload profile picture")
-    public void userClicksOnTheProfilePictureAndClicksOnIconAndUploadProfilePicture() throws InterruptedException, FindFailed, IOException {
+    public void userClicksOnTheProfilePictureAndClicksOnIconAndUploadProfilePicture() throws InterruptedException, IOException {
      info.upload_pic();
     }
 
@@ -91,13 +94,14 @@ public class MyStepdefs {
     }
 
     @Then("Profile picture uploaded should get save and show on application")
-    public void profilePictureUploadedShouldGetSaveAndShowOnApplication() {
-        System.out.println("success");
+    public void profilePictureUploadedShouldGetSaveAndShowOnApplication() throws InterruptedException {
+        //System.out.println("success");
+        info.verify_success_msg();
     }
 
 
     @Then("User details should be saved succesfully")
-    public void userDetailsShouldBeSavedSuccesfully() {
+    public void userDetailsShouldBeSavedSuccesfully() throws InterruptedException {
         info.verify_success_msg();
 
     }

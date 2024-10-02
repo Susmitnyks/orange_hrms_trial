@@ -9,34 +9,30 @@ import java.io.IOException;
 import java.time.Duration;
 
 public class loginpage extends basepage{
-
-    public loginpage(WebDriver driver) {
+   public loginpage(WebDriver driver) {
         super(driver);  //calls constructor of super class.
-    }
+
+   }
 
     String drop_down="//*[@class=\"oxd-userdropdown-img\"]";
-    String log_out="//a[@class='oxd-userdropdown-link' and text()='Logout']";
-    String hrm_url="https://opensource-demo.orangehrmlive.com";
-    String username="//input[@name='username']";
-    String password="//input[@name='password']";
-    String submit="//button[text()=' Login ']";
-    String dashboard="//*[@class=\"oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module\"]";
+    String log_out="//*[@id=\"navbar-logout\"]/a/span";
+    String hrm_url="https://susmit1000-trials713.orangehrmlive.com/auth/login";
+    String username="//*[@id=\"txtUsername\"]";
+    String password="//*[@id=\"txtPassword\"]";
+    String submit="//*[@id=\"frmLogin\"]/div[4]/button";
+    String dashboard="//*[@id=\"topbar\"]/ul[1]/li[2]/div";
 
-    public WebDriver get_driver()
-    {
-        return driver;
-    }
+
     public void launch()
     {
         driver.manage().window().maximize();
         driver.get(hrm_url);
     }
 
-   public void usr_pass()
-    {
-        explicitWait(driver,username, Duration.ofSeconds(10));
-        sendKeys("Admin",username);
-        sendKeys("admin123",password);
+   public void usr_pass() throws IOException {
+        explicitWait(driver,username, Duration.ofSeconds(15));
+        sendKeys(getcell(1,5),username);
+        sendKeys(getcell(1,6),password);
     }
 
     public void usr_pass_outline(String user_name,String pass_word)
@@ -49,20 +45,22 @@ public class loginpage extends basepage{
     public void submit_btn()
     {
         click(submit);
+        System.out.println("success now here updated today now");
+        System.out.println("success now here updated today now on susmit");
     }
 
     public void verifyHomepage_login() throws InterruptedException, IOException {
         explicitWait(driver,dashboard,Duration.ofSeconds(4));
         String db=driver.findElement(By.xpath(dashboard)).getText();
-        Assert.assertEquals(screenShot(),"Dashboard",db);
-        //driver.quit();
+        Assert.assertEquals(screenShot(),"Employee Management",db);
+        driver.quit();
+        //driver.close();
     }
     public void log_out()
     {
         explicitWait(driver,drop_down, Duration.ofSeconds(10));
-        driver.findElement(By.xpath(drop_down)).click();
+        //driver.findElement(By.xpath(drop_down)).click();
         driver.findElement(By.xpath(log_out)).click();
-        driver.quit();
     }
     public void verify_homepage_logout()
     {
@@ -70,6 +68,7 @@ public class loginpage extends basepage{
         String title=driver.getTitle();
         Assert.assertEquals("Test case fails",exp,title);
         driver.quit();
+        //driver.close();
     }
 
 

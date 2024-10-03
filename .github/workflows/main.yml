@@ -57,32 +57,38 @@ jobs:
           python - <<EOF
           import smtplib
           from email.mime.multipart import MIMEMultipart
-          from email.mime.text import MIMEText
+          from email.mime.base import MIMEBase
+          from email import encoders
           from pathlib import Path
-
+        
           # Email configuration
           sender_email = "susmit.s.surwade@gmail.com"
           receiver_email = "susmit.s.surwade@gmail.com"
           password = "${{ secrets.GMAIL_PASSWORD }}"
-
-          # Read the Spark HTML report
+        
+          # Path to the Spark HTML report
           report_path = 'test-output/SparkReport/Spark.html'
-          report_content = Path(report_path).read_text()
-
+        
           # Create the email
           msg = MIMEMultipart()
           msg['From'] = sender_email
           msg['To'] = receiver_email
           msg['Subject'] = 'Spark HTML Report BDD'
-
-          # Attach the HTML content
-          msg.attach(MIMEText(report_content, 'html'))
-
+        
+          # Attach the HTML report as a file
+          with open(report_path, 'rb') as f:
+              mime = MIMEBase('application', 'octet-stream')
+              mime.set_payload(f.read())
+              encoders.encode_base64(mime)
+              mime.add_header('Content-Disposition', f'attachment; filename="{Path(report_path).name}"')
+              msg.attach(mime)
+        
           # Send the email
           with smtplib.SMTP('smtp.gmail.com', 587) as server:
               server.starttls()
               server.login(sender_email, password)
               server.send_message(msg)
-
-          print("Email sent successfully!")
+        
+          print("Email with attachment sent successfully!")
           EOF
+

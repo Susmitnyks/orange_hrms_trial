@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary"></span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Jan 19, 2024 02:07:51 pm</span></a>
+<a href="#"><span class="badge badge-primary">Oct 2, 2024 01:40:13 PM</span></a>
 </li>
 </ul>
 </div>
@@ -79,7 +79,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">@Myinfo_updatedetails</a>
+<a class="dropdown-item" href="#">@Login_test_case</a><a class="dropdown-item" href="#">@Logout_test_case</a>
 </ul>
 </li>
 </ul>
@@ -90,9 +90,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Test Edit My info functionality</p>
+            <p class="name">Test login and logout functionality</p>
             <p class="text-sm">
-              <span>2:07:52 pm</span> / <span>00:00:20:826</span>
+              <span>1:40:13 PM</span> / <span>00:00:43:926</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -100,10 +100,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Test Edit My info functionality</h5>
-<span class='badge badge-success'>01.19.2024 2:07:52 pm</span>
-<span class='badge badge-danger'>01.19.2024 2:08:12 pm</span>
-<span class='badge badge-default'>00:00:20:826</span>
+<h5 class="test-status text-pass">Test login and logout functionality</h5>
+<span class='badge badge-success'>10.02.2024 1:40:13 PM</span>
+<span class='badge badge-danger'>10.02.2024 1:40:57 PM</span>
+<span class='badge badge-default'>00:00:43:926</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -115,33 +115,64 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Verify successful profile data update</div>
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Verify successful login with valid credentials</div>
       </div>
     </div>
         <div class="collapse">
           <div class="card-body">
-              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userIsOnTheMyInfoPage()">
-                <span>Given User is on the My info page</span>
+              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userIsOnTheLoginPage()">
+                <span>Given User is on the login page</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userEnterFnameAndLname()">
-                <span>When User enter Fname and Lname</span>
+              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userEntersUsernameAndPassword()">
+                <span>When User enters username and password</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userUpdateHisBirthdate()">
-                <span>And User update his birthdate</span>
+              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userClicksOnTheSubmitButton()">
+                <span>And User clicks on the submit button</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userSelectsHisNationalityAndClickOnSaveButton()">
-                <span>And User selects his nationality and click on save button</span>
+              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userIsNavigatedToHomePage()">
+                <span>Then User is navigated to home page</span>
       <div>
       </div>
               </div>
-              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userDetailsShouldBeSavedSuccesfully()">
-                <span>Then User details should be saved succesfully</span>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="7"><span class="badge log pass-bg mr-2">Pass</span>Verify successful logout functionality</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userIsOnTheLoginPage()">
+                <span>Given User is on the login page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userEntersUsernameAndPassword()">
+                <span>When User enters username and password</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userClicksOnTheSubmitButton()">
+                <span>And User clicks on the submit button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userUserClicksOnLogoutButton()">
+                <span>Then User clicks on logout button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinitions.MyStepdefs.userIsNavigatedBackToLoginScreen()">
+                <span>And User is navigated back to login screen</span>
       <div>
       </div>
               </div>
@@ -164,7 +195,7 @@
 <div class="test-list">
 <div class="test-list-tools">
 <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">2</span></a></li></ul>
 </div>
 <div class="test-list-wrapper scrollable">
 <ul class="test-list-item">
@@ -173,12 +204,12 @@
 <span class="meta">
 <span class='badge log pass-bg'>1</span>
 </span>
-<p class="name">@Myinfo_updatedetails</p>
+<p class="name">@Login_test_case</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>@Myinfo_updatedetails</h4>
+<h4>@Login_test_case</h4>
 <span status="pass" class='badge log pass-bg'>1 passed</span>
 </div>
 <table class='table table-sm mt-4'>
@@ -192,11 +223,47 @@
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>14:07:52 pm</td>
+<td>13:40:13 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>Verify successful profile data update</a>
+<a href="#" class="linked" test-id='1' id='2'>Verify successful login with valid credentials</a>
 <div class="">
-<span class="badge badge-default">Test Edit My info functionality.Verify successful profile data update</span>
+<span class="badge badge-default">Test login and logout functionality.Verify successful login with valid credentials</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@Logout_test_case</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@Logout_test_case</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>13:40:28 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='7'>Verify successful logout functionality</a>
+<div class="">
+<span class="badge badge-default">Test login and logout functionality.Verify successful logout functionality</span>
 </div>
 </td>
 </tr>
@@ -217,13 +284,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Jan 19, 2024 02:07:51 pm</h3>
+<h3>Oct 2, 2024 01:40:13 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Jan 19, 2024 02:08:13 pm</h3>
+<h3>Oct 2, 2024 01:40:57 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -274,7 +341,7 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>1</b> scenarios passed</small></div>
+<div><small data-tooltip='100%'><b>2</b> scenarios passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> scenarios failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
@@ -294,7 +361,7 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>5</b> steps passed</small></div>
+<div><small data-tooltip='100%'><b>9</b> steps passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> steps failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
@@ -313,7 +380,7 @@
 </div></div>
 <script>
 var timeline = {
-"Test Edit My info functionality":20.826
+"Test login and logout functionality":43.926
 };
 </script>
 <div class="row">
@@ -323,7 +390,15 @@ var timeline = {
 <div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
-<td>@Myinfo_updatedetails</td>
+<td>@Login_test_case</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@Logout_test_case</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -344,13 +419,13 @@ failParent: 0,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 1,
+passChild: 2,
 failChild: 0,
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 5,
+passGrandChild: 9,
 failGrandChild: 0,
 warningGrandChild: 0,
 skipGrandChild: 0,

@@ -14,9 +14,9 @@ import java.time.format.DateTimeFormatter;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features",
+        features = "src/test/resources/features/login.feature",
         glue = {"stepdefinitions"},
-        tags = "@Myinfo_updatedetails",
+        tags = "not @Login_test_case_outline",
         monochrome = true,
         dryRun = false,
         //plugin = {"pretty","html:target/cucumber-html-report","json:cucumber.json" }
@@ -30,7 +30,8 @@ public class Mytestrunner {
             LocalDateTime now = LocalDateTime.now();
             // Create an email attachment
             EmailAttachment attachment = new EmailAttachment();
-            attachment.setPath("C:\\Users\\SusmitSurwade\\IdeaProjects\\Orange_hrms\\test-output\\SparkReport\\Spark.html"); // Replace with the actual path
+            //attachment.setPath("C:\\Users\\SusmitSurwade\\IdeaProjects\\Orange_hrms\\test-output\\SparkReport\\Spark.html"); // Replace with the actual path
+            attachment.setPath("test-output/SparkReport/Spark.html");
             attachment.setDisposition(EmailAttachment.ATTACHMENT);
             attachment.setDescription("Extent Report");
             attachment.setName("ExtentReport.html");

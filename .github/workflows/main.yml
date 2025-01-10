@@ -1,6 +1,5 @@
 name: Selenium BDD Test
 
-# Allow the workflow to be triggered manually
 on:
   workflow_dispatch:  # Enables manual triggering
 
@@ -9,32 +8,87 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2  # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up JDK 11
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'  # Changed to Java 11
 
-    - name: Set up Maven
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'adopt'
-        java-version: '11'
-        cache: maven
+      - name: Set up Maven
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'  # Changed to Java 11
+          cache: maven
 
-    - name: Install Chrome
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable  # Install Chrome browser
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
 
-    - name: Run tests with Maven
-      run: mvn clean test  # Run Maven tests
+      - name: Run tests with Maven
+        run: mvn clean test -q
 
-    - name: Archive test reports
-      if: always()
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-report
-        path: target/surefire-reports/  # Uploads test report to GitHub Action logs
+      # Archive Spark HTML Test Report
+      - name: Archive Spark HTML test reports
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: spark-html-report
+          path: test-output/SparkReport/Spark.html  # Correct path for Spark HTML report
+          if-no-files-found: warn
+
+      # Send email with Spark HTML report
+      - name: Send Spark HTML report via email
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Use the latest version of Python
+
+      - name: Install required Python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install secure-smtplib
+
+      - name: Send email with report
+        run: |
+          python - <<EOF
+          import smtplib
+          from email.mime.multipart import MIMEMultipart
+          from email.mime.base import MIMEBase
+          from email import encoders
+          from pathlib import Path
+        
+          # Email configuration
+          sender_email = "susmit.s.surwade@gmail.com"
+          receiver_email = "susmit.s.surwade@gmail.com"
+          password = "${{ secrets.GMAIL_PASSWORD }}"
+        
+          # Path to the Spark HTML report
+          report_path = 'test-output/SparkReport/Spark.html'
+        
+          # Create the email
+          msg = MIMEMultipart()
+          msg['From'] = sender_email
+          msg['To'] = receiver_email
+          msg['Subject'] = 'Spark HTML Report BDD'
+        
+          # Attach the HTML report as a file
+          with open(report_path, 'rb') as f:
+              mime = MIMEBase('application', 'octet-stream')
+              mime.set_payload(f.read())
+              encoders.encode_base64(mime)
+              mime.add_header('Content-Disposition', f'attachment; filename="{Path(report_path).name}"')
+              msg.attach(mime)
+        
+          # Send the email
+          with smtplib.SMTP('smtp.gmail.com', 587) as server:
+              server.starttls()
+              server.login(sender_email, password)
+              server.send_message(msg)
+        
+          print("Email with attachment sent successfully!")
+          EOF
+

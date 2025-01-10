@@ -16,7 +16,7 @@ public class loginpage extends basepage{
 
     String drop_down="//*[@class=\"oxd-userdropdown-img\"]";
     String log_out="//*[@id=\"navbar-logout\"]/a/span";
-    String hrm_url="https://susmit1-trials714.orangehrmlive.com";
+    String hrm_url="https://testsusmit-trials714.orangehrmlive.com";
     String username="//*[@id=\"txtUsername\"]";
     String password="//*[@id=\"txtPassword\"]";
     String submit="//*[@id=\"frmLogin\"]/div[4]/button";
@@ -46,7 +46,7 @@ public class loginpage extends basepage{
     {
         click(submit);
         System.out.println("success now here updated today now");
-        System.out.println("success now here updated today now on susmit");
+        System.out.println("success now here updated today now on susmit test");
     }
 
     public void verifyHomepage_login() throws InterruptedException, IOException {

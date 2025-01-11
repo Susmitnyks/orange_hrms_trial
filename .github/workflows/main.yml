@@ -1,14 +1,20 @@
 name: Selenium BDD Test
 
 on:
-  #workflow_dispatch:  # Enables manual triggering
-  pull_request:
+  push:
     branches:
-      - master
+      - main
+      - susmit
+  workflow_dispatch:  # Enables manual triggering
+  #pull_request:
+    #branches:
+      #- master
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      HEADLESS_MODE: ${{ secrets.HEADLESS_MODE }}
 
     steps:
       - name: Checkout code

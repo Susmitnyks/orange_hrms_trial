@@ -1,6 +1,10 @@
 name: Selenium BDD Test
 
 on:
+  push:
+    branches:
+      - main
+      - susmit
   workflow_dispatch:  # Enables manual triggering
   #pull_request:
     #branches:

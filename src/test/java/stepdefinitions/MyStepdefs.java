@@ -123,4 +123,9 @@ public class MyStepdefs extends driver_factory {
     public void userSelectsHisNationalityAndClickOnSaveButton() throws IOException, InterruptedException {
         info.nation();
     }
+
+    @Then("verify logged username")
+    public void verifyLoggedUsername() {
+        info.get_username();
+    }
 }

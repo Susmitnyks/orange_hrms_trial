@@ -1,8 +1,7 @@
 package pages;
 
-import org.junit.Assert;
+import org.testng.Assert;
 import org.openqa.selenium.*;
-
 
 import java.io.IOException;
 import java.time.Duration;
@@ -12,6 +11,7 @@ public class myinfopage extends basepage{
      super(driver); // calls constructor of super class.
 
   }
+    String usrname="//*[@id=\"sidebar-profile-picture\"]/a";
     String fname_field="//input[@class='oxd-input oxd-input--focus oxd-input--error orangehrm-firstname']";
     String fname_focus="//input[@class='oxd-input oxd-input--focus orangehrm-firstname']";
     String fname="//input[@class='oxd-input oxd-input--active orangehrm-firstname']";
@@ -79,6 +79,13 @@ public class myinfopage extends basepage{
         implicit_wait();
         dropdown_list(nationality_drp,country_xpath);
         driver.findElement(By.xpath(save_btn)).click();
+    }
+
+    public void get_username(){
+        String usrname1=driver.findElement(By.xpath(usrname)).getText();
+        Assert.assertEquals(usrname1, "Aaron Hamilton");
+        System.out.println("get username method");
+
     }
 
 }

@@ -16,12 +16,13 @@ import java.time.format.DateTimeFormatter;
 @CucumberOptions(
         features = "src/test/resources/features/Verification.feature",
         glue = {"stepdefinitions"},
-        tags = "not @Login_test_case_outline",
+        tags = "",
+        //not @Login_test_case_outline
         monochrome = true,
         dryRun = false,
-        //plugin = {"pretty","html:target/cucumber-html-report","json:cucumber.json" }
-        plugin= {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
-public class Mytestrunner {
+        plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+)
+public class MyTestRunnerTest {
     @AfterClass
     public static void sendEmail() {
         try {

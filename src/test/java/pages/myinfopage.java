@@ -1,6 +1,6 @@
 package pages;
 
-import org.testng.Assert;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 
 import java.io.IOException;

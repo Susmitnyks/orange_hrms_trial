@@ -14,6 +14,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set HEADLESS_MODE to true
+        run: echo "HEADLESS_MODE=true" >> $GITHUB_ENV
+
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:

@@ -53,7 +53,7 @@ public class loginpage extends basepage{
         explicitWait(driver,dashboard,Duration.ofSeconds(4));
         String db=driver.findElement(By.xpath(dashboard)).getText();
         Assert.assertEquals(screenShot(),"Employee Management",db);
-        driver.quit();
+        //driver.quit();
         //driver.close();
     }
     public void log_out()

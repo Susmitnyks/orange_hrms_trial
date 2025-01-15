@@ -84,7 +84,7 @@ public class myinfopage extends basepage{
     public void get_username(){
         String usrname1=driver.findElement(By.xpath(usrname)).getText();
         Assert.assertEquals(usrname1, "Aaron Hamilton");
-        System.out.println("get username method updated");
+        System.out.println("get username method updated now");
 
     }
 

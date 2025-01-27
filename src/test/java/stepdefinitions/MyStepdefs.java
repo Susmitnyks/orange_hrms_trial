@@ -1,5 +1,8 @@
 package stepdefinitions;
 
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,6 +18,7 @@ import pages.myinfopage;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class MyStepdefs extends driver_factory {
 
@@ -127,5 +131,69 @@ public class MyStepdefs extends driver_factory {
     @Then("verify logged username")
     public void verifyLoggedUsername() {
         info.get_username();
+    }
+
+    @Given("User is on the test login page")
+    public void userIsOnTheTestLoginPage() {
+        System.out.println("background given");
+    }
+
+    @When("User enters username and pincode.")
+    public void userEntersUsernameAndPincode(DataTable usercredentials) {
+        System.out.println("background when");
+        List<List<String>> data = usercredentials.asLists();
+        System.out.println(data.get(0).get(0));
+        System.out.println(data.get(0).get(1));
+    }
+
+    @And("user click on submit button.")
+    public void userClickOnSubmitButton() {
+        System.out.println("background and");
+    }
+
+    @Then("User will land on homepage.")
+    public void userWillLandOnHomepage() {
+        System.out.println("background then");
+    }
+
+    @Given("user on home page")
+    public void userOnHomePage() {
+        System.out.println("scenario one given");
+    }
+
+    @When("user click on product one")
+    public void userClickOnProductOne() {
+        System.out.println("scenario one when");
+    }
+
+    @And("user click on add to cart")
+    public void userClickOnAddToCart() {
+        System.out.println("scenario one and");
+    }
+
+    @Then("product one is added")
+    public void productOneIsAdded() {
+        System.out.println("scenario one then");
+    }
+
+    @When("user click on product two")
+    public void userClickOnProductTwo() {
+        System.out.println("scenario two when");
+    }
+
+    @Then("product two is added")
+    public void productTwoIsAdded() {
+        System.out.println("scenario two then");
+    }
+
+    @Before
+    public void setUp()
+    {
+        System.out.println("this is hook before");
+    }
+    @After
+    public void tearDown()
+    {
+        System.out.println("this is hook after");
     }
 }

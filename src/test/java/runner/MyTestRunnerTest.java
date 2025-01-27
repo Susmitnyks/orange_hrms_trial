@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/Verification.feature",
+        features = "src/test/resources/features/Demo.feature",
         glue = {"stepdefinitions"},
         tags = "",
         //not @Login_test_case_outline

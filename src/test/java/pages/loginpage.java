@@ -3,7 +3,10 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -11,11 +14,12 @@ import java.time.Duration;
 public class loginpage extends basepage{
    public loginpage(WebDriver driver) {
         super(driver);  //calls constructor of super class.
-
+        PageFactory.initElements(driver, this);
    }
+    @FindBy(xpath = "//*[@id=\"navbar-logout\"]/a/span")
+    WebElement logout;
 
     String drop_down="//*[@class=\"oxd-userdropdown-img\"]";
-    String log_out="//*[@id=\"navbar-logout\"]/a/span";
     String hrm_url="https://testsusmit-trials714.orangehrmlive.com";
     String username="//*[@id=\"txtUsername\"]";
     String password="//*[@id=\"txtPassword\"]";
@@ -59,7 +63,7 @@ public class loginpage extends basepage{
     {
         explicitWait(driver,drop_down, Duration.ofSeconds(10));
         //driver.findElement(By.xpath(drop_down)).click();
-        driver.findElement(By.xpath(log_out)).click();
+        logout.click();
     }
     public void verify_homepage_logout()
     {

@@ -1,5 +1,6 @@
 Feature: Verify Elements on the page.
 
+  Background: User knows the flow.
   @Verify_name_test_case
   Scenario: Verify Logged-in username
     Given User is on the login page
